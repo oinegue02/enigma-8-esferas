@@ -7,7 +7,7 @@
     <style>
         :root {
             --primary: #2c3e50;
-            --accent: #e67e22; /* Laranja metálico para destaque */
+            --accent: #e67e22;
             --bg: #f4f7f6;
             --text: #2d3436;
             --white: #ffffff;
@@ -64,38 +64,41 @@
 
         .challenge-box {
             background: #dfe6e9;
-            padding: 25px;
+            padding: 30px;
             border-radius: 10px;
             margin: 30px 0;
             text-align: center;
         }
 
-        .highlight {
-            color: #c0392b;
+        .question {
+            font-size: 1.5rem;
+            color: var(--primary);
             font-weight: bold;
-            font-size: 1.3rem;
+            font-style: italic;
+            margin: 15px 0;
+            line-height: 1.3;
         }
 
         .step-box {
             display: none;
             animation: slideIn 0.6s ease-out forwards;
             background: #f9f9f9;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
             margin-top: 20px;
             border: 1px solid #ddd;
         }
 
         @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .btn-action {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 18px 40px;
             font-size: 1.1rem;
             border-radius: 50px;
             cursor: pointer;
@@ -104,45 +107,48 @@
             margin: 20px auto;
             text-transform: uppercase;
             font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .btn-action:hover {
             background: var(--accent);
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .visual-aid {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 12px;
+            margin: 25px 0;
         }
 
         .sphere {
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             background: radial-gradient(circle at 10px 10px, #bdc3c7, #2c3e50);
             border-radius: 50%;
-        }
-
-        .heavy {
-            background: radial-gradient(circle at 10px 10px, #95a5a6, #000);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
             font-size: 0.85rem;
             color: #7f8c8d;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
         }
 
         .final-reveal {
             background: #d1f2eb;
             border: 2px solid #1abc9c;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             margin-top: 30px;
         }
+
+        ul { text-align: left; display: inline-block; margin-top: 15px; }
+        li { margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -154,43 +160,44 @@
     </header>
 
     <div class="mystery-text">
-        Você tem diante de si <strong>8 esferas de aço</strong> idênticas em tamanho e cor. No entanto, uma delas é imperfeita: ela é ligeiramente <strong>mais pesada</strong> que as outras sete. 
+        Oito esferas de aço repousam à sua frente. Visualmente, elas são perfeitamente idênticas. Contudo, uma delas carrega uma imperfeição de fabricação: ela é ligeiramente <strong>mais pesada</strong> que as demais sete. 
     </div>
 
     <div class="visual-aid">
         <div class="sphere"></div><div class="sphere"></div><div class="sphere"></div><div class="sphere"></div>
-        <div class="sphere"></div><div class="sphere"></div><div class="sphere"></div><div class="sphere heavy"></div>
+        <div class="sphere"></div><div class="sphere"></div><div class="sphere"></div><div class="sphere"></div>
     </div>
 
     <div class="challenge-box">
-        <p>Você possui uma balança de pratos (dois pratos) e pode realizar apenas...</p>
-        <p class="highlight">DUAS PESAGENS!</p>
-        <p>A maioria das pessoas falha ao tentar dividir em grupos de 4. <br>Você consegue decifrar o método infalível?</p>
+        <p>Utilizando apenas uma balança de pratos (sem pesos manuais), responda:</p>
+        <div class="question">
+            "Com quantas pesagens, no mínimo, você consegue identificar com absoluta certeza a esfera falsa?"
+        </div>
     </div>
 
-    <button class="btn-action" id="btn1" onclick="showStep(1)">Realizar a 1ª Pesagem</button>
+    <button class="btn-action" id="btn1" onclick="showStep(1)">Decifrar o Enigma</button>
 
     <div id="step1" class="step-box">
-        <h3>1ª Pesagem: O Segredo da Divisão por 3</h3>
-        <p>Não divida em 4 contra 4! O segredo é separar as esferas em três grupos: <strong>3, 3 e 2</strong>.</p>
-        <p>Coloque 3 esferas no prato esquerdo e 3 esferas no prato direito. Deixe 2 de fora.</p>
+        <h3>A Resposta: Apenas DUAS pesagens!</h3>
+        <p>A solução reside na estratégia da divisão por 3 (Tricotomia). <br><strong>1ª Pesagem:</strong> Distribua as 8 esferas em grupos de <strong>3, 3 e 2</strong>.</p>
+        <p>Posicione 3 esferas em cada prato da balança e observe:</p>
         <ul>
             <li><strong>Se a balança equilibrar:</strong> A esfera pesada está no grupo de 2 que ficou de fora.</li>
-            <li><strong>Se a balança inclinar:</strong> A esfera pesada está no prato que desceu (o grupo de 3).</li>
+            <li><strong>Se houver inclinação:</strong> A esfera pesada está no prato que desceu.</li>
         </ul>
-        <button class="btn-action" id="btn2" onclick="showStep(2)">Realizar a 2ª Pesagem (Final)</button>
+        <button class="btn-action" id="btn2" onclick="showStep(2)">Entender a 2ª Pesagem (A Identificação Final)</button>
     </div>
 
     <div id="step2" class="step-box final-reveal">
-        <h3>2ª Pesagem: A Descoberta Final</h3>
-        <p>Agora você só tem 3 esferas (ou 2) para investigar:</p>
-        <p><strong>Cenário A (Se estava no grupo de 3):</strong> Pegue 2 esferas desse grupo e coloque uma em cada prato. Se uma descer, ela é a pesada. Se equilibrarem, a pesada é a 3ª esfera que ficou de fora.</p>
-        <p><strong>Cenário B (Se estava no grupo de 2):</strong> Coloque as 2 esferas na balança, uma em cada prato. A que inclinar a balança é o seu alvo.</p>
-        <h3 style="text-align:center; color: #16a085;">Lógica Imbatível!</h3>
+        <h3>2ª Pesagem: O Resultado Final</h3>
+        <p>Com o subgrupo suspeito identificado, resta apenas uma ação:</p>
+        <p><strong>Cenário A (Esfera no grupo de 3):</strong> Selecione 2 esferas deste grupo e coloque uma em cada prato. Se um lado descer, a esfera pesada é a desse prato. Se equilibrarem, a esfera pesada é a 3ª, que não foi à balança nesta rodada.</p>
+        <p><strong>Cenário B (Esfera no grupo de 2):</strong> Coloque ambas na balança. O prato que inclinar revela o alvo imediatamente.</p>
+        <h3 style="text-align:center; color: #16a085; font-size: 1.5rem;">Lógica Superior e Eficiência!</h3>
     </div>
 
     <footer>
-        Desenvolvido para fins didáticos | Lógica e Pensamento Computacional
+        Desenvolvido para fins didáticos | Tecnologia & Matemática Aplicada
     </footer>
 </div>
 
@@ -199,11 +206,16 @@
         if(step === 1) {
             document.getElementById('step1').style.display = 'block';
             document.getElementById('btn1').style.display = 'none';
-            window.scrollTo(0, document.body.scrollHeight);
+            // Rolagem suave para o conteúdo revelado
+            setTimeout(() => {
+                document.getElementById('step1').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         } else if(step === 2) {
             document.getElementById('step2').style.display = 'block';
             document.getElementById('btn2').style.display = 'none';
-            window.scrollTo(0, document.body.scrollHeight);
+            setTimeout(() => {
+                document.getElementById('step2').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         }
     }
 </script>
